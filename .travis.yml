@@ -4,8 +4,9 @@ elixir:
 otp_release:
   - 20.0
 before_script:
+  - kerl list installations
   - "MIX_ENV=test mix local.hex --force && MIX_ENV=test mix deps.get"
 script:
-  - "MIX_ENV=test mix test"
+  - MIX_ENV=test mix test
   - mix format --check-formatted
   - ./scripts/docker_test.sh
