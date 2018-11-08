@@ -10,12 +10,12 @@ pushd demo
 
 echo "## compiling demo project inside the container"
 
-docker-compose run mix compile
+docker-compose run demo mix compile
 
 echo "## running tests for demo project inside the container"
 
-docker-compose run mix test
+docker-compose run demo mix test
 
 echo "## running tests for demo project inside the container"
 
-docker-compose run mix format --check-formatted
+docker-compose run demo mix format --check-formatted
