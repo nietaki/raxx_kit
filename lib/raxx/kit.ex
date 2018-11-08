@@ -78,7 +78,8 @@ defmodule Raxx.Kit do
   defp copy_template(file, root, assigns) do
     case File.read(file) do
       {:error, :eisdir} ->
-        Mix.Generator.create_directory(file)
+        path = Path.relative_to(file, root)
+        Mix.Generator.create_directory(path)
 
       {:ok, template} ->
         path = Path.relative_to(file, root)
