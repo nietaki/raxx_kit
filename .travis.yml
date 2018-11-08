@@ -3,4 +3,7 @@ elixir:
   - 1.7.3
 otp_release:
   - 20.0
-script: ./scripts/docker_test.sh
+script:
+  - "MIX_ENV=test mix local.hex --force && MIX_ENV=test mix do deps.get, test"
+  - mix format --check-formatted
+  - ./bin/docker_test.sh
