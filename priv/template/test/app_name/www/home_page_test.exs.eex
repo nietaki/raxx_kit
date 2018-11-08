@@ -10,6 +10,6 @@ defmodule <%= @module %>.WWW.HomePageTest do
 
     assert response.status == 200
     assert {"content-type", "text/html"} in response.headers
-    assert String.contains?(response.body, "Raxx.Kit")
+    assert String.contains?(IO.iodata_to_binary(response.body), "Raxx.Kit")
   end
 end
