@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -eux
 
 echo "## generating a demo project"
 
@@ -10,6 +10,7 @@ pushd demo
 
 echo "## compiling demo project inside the container"
 
+docker-compose run demo mix deps.get
 docker-compose run demo mix compile
 
 echo "## running tests for demo project inside the container"
