@@ -86,14 +86,18 @@ defmodule Raxx.Kit do
         {path, contents} =
           case String.split(path, ~r/\.eex$/) do
             [path, ""] ->
-              path = String.replace(path, "app_name", assigns.name)
-              |> String.replace("_DOTFILE", "")
+              path =
+                String.replace(path, "app_name", assigns.name)
+                |> String.replace("_DOTFILE", "")
+
               contents = EEx.eval_string(template, assigns: assigns)
               {path, contents}
 
             [path] ->
-              path = String.replace(path, "app_name", assigns.name)
-              |> String.replace("_DOTFILE", "")
+              path =
+                String.replace(path, "app_name", assigns.name)
+                |> String.replace("_DOTFILE", "")
+
               contents = template
               {path, contents}
           end
