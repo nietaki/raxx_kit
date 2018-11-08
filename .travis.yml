@@ -1,10 +1,12 @@
 language: elixir
+sudo: required
+services:
+  - docker
 elixir:
   - 1.7.3
 otp_release:
   - 20.0
 before_script:
-  - kerl list installations
   - "MIX_ENV=test mix local.hex --force && MIX_ENV=test mix deps.get"
 script:
   - MIX_ENV=test mix test
