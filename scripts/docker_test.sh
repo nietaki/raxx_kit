@@ -27,10 +27,4 @@ echo ""
 
 docker-compose run demo mix test
 
-echo ""
-echo "## checking formatting of the demo project inside the container"
-echo ""
-
-docker-compose run demo mix format --check-formatted
-
 popd
