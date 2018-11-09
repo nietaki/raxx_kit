@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-set -eux
+set -eu
 # https://stackoverflow.com/a/246128/246337
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
+echo ""
 echo "## generating a demo project"
+echo ""
+
 pushd $DIR/..
 mix compile
 mix raxx.kit --docker demo
@@ -12,16 +15,22 @@ popd
 
 pushd $DIR/../demo
 
-echo "## compiling demo project inside the container"
+echo ""
+echo "## getting demo project dependencies inside the container"
+echo ""
 
 docker-compose run demo mix deps.get
-docker-compose run demo mix compile
 
+echo ""
 echo "## running tests for demo project inside the container"
+echo ""
 
 docker-compose run demo mix test
 
-echo "## running tests for demo project inside the container"
+echo ""
+echo "## checking formatting of the demo project inside the container"
+echo ""
 
 docker-compose run demo mix format --check-formatted
+
 popd
